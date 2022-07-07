@@ -8,35 +8,29 @@ echo.
 goto select
 
 :select
+powercfg /GETACTIVESCHEME
+echo.
+echo.
 echo What Powerplan do you want to switch to?
 echo.
-echo   1 = Show current Powerplan
-echo   2 = Balanced
-echo   3 = Ultimate Performance
-echo   4 = Power Saving
-echo   5 = High Performance
-echo   6 = Exit
+echo   1 = Balanced
+echo   2 = Ultimate Performance
+echo   3 = Power Saving
+echo   4 = High Performance
+echo   5 = Exit
 echo.
 goto choice
 
 :choice
 set /p c=Select your Option: 
 echo.
-if "%c%" GTR "6" goto choice
+if "%c%" GTR "5" goto choice
 if "%c%" LSS "1" goto choice
-if "%c%"=="1" goto current
-if "%c%"=="2" goto balanced
-if "%c%"=="3" goto ultimate
-if "%c%"=="4" goto saving
-if "%c%"=="5" goto high
-if "%c%"=="6" goto exit
-
-:current
-cls
-powercfg /GETACTIVESCHEME
-echo.
-echo.
-goto select
+if "%c%"=="1" goto balanced
+if "%c%"=="2" goto ultimate
+if "%c%"=="3" goto saving
+if "%c%"=="4" goto high
+if "%c%"=="5" goto exit
 
 :balanced
 echo Switching to Balanced...
@@ -48,7 +42,7 @@ goto select
 
 :ultimate
 echo Switching to Ultimate Performance...
-powercfg /s 22922280-5ac0-40c0-bcea-d66432e7dbcf
+powercfg /s 168d3349-aca3-4d57-8647-21d81ea13ca3
 cls
 echo Powerplan sucessfully changed!
 echo.
